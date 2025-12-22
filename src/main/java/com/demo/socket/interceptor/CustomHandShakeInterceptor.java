@@ -9,8 +9,7 @@ import java.util.Map;
 
 public class CustomHandShakeInterceptor implements HandshakeInterceptor {
     @Override
-    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes)
-            throws Exception {
+    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) {
         try {
             var auth = request.getHeaders().get("Authorization").stream().findFirst().orElseThrow(
                     () -> new IllegalArgumentException("Authorization header not found"));
