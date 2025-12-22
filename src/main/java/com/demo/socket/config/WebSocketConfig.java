@@ -1,6 +1,7 @@
 package com.demo.socket.config;
 
 import com.demo.socket.handler.SocketHandler;
+import com.demo.socket.interceptor.CustomHandShakeInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -13,6 +14,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(getSocketHandler(), "/test")
+                .addInterceptors(new CustomHandShakeInterceptor())
                 .setAllowedOrigins("*");
     }
 
