@@ -17,3 +17,7 @@
 - This token will be used in our websocket connection from postman. For that we need to copy the token and paste it under the headers section of the websocket postman request, since in postman websocket request we do not have option to auto-generate the token in authorization tab.
 
 ## Test WebSocket connection using the generated token:
+- Start the websocket spring boot application.
+- In postman, add the previously generated token in the headers section of the websocket request as **Authorization: Bearer {access_token}** (Check the sample websocket postman collection **Websocket basics**). 
+- Click on **Connect** button to initiate the websocket connection. If the token is valid, you should be able to establish the connection successfully otherwise you will get an 401 unauthorized error.
+- Kindly note that **issuer-uri** in the application.yml is of the format `https://{yourOktaDomain}/`. For some reason this uri is not present in the **Endpoints** tab in okta application dashboard.
