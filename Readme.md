@@ -1,3 +1,6 @@
+# Sample web socket app with Oauth authentication
+This is a sample spring boot websocket application secured with Okta Oauth2 authentication. The application uses spring security to validate the access token sent from the client while establishing the websocket connection.
+
 ## Setup Okta OAuth2 Authentication Server:
 - Sign up at [developer.okta.com](https://developer.okta.com) and choose free Auth0 Platform
 - Create a sample web application under **Applications** tab. You can create the application with default settings.
