@@ -2,6 +2,7 @@ package com.demo.socket.handler;
 
 import org.springframework.web.socket.*;
 
+import java.io.IOException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -15,7 +16,9 @@ public class SocketHandler implements WebSocketHandler {
         future = executor.scheduleAtFixedRate(() -> {
             try {
                 if (session.isOpen()) {
-                    session.sendMessage(new TextMessage("Server time: " + System.currentTimeMillis()));
+                    var message = "Hello from server at " + System.currentTimeMillis() + " session id " + session.getId();
+                    System.out.println(message);
+                    session.sendMessage(new TextMessage(message));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -24,8 +27,10 @@ public class SocketHandler implements WebSocketHandler {
     }
 
     @Override
-    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
-        System.out.println("Received message: " + message.getPayload() + " from session id: " + session.getId());
+    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws IOException {
+        var msg = "Received message: " + message.getPayload() + " from session id: " + session.getId();
+        System.out.println(msg);
+        session.sendMessage(new TextMessage(msg));
     }
 
     @Override
