@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socket-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socket-app
+  template:
+    metadata:
+      labels:
+        app: socket-app
+    spec:
+      # This selector is applicable when pushing the docker image from mac because of mac's arm64 architecture
+      # Remove this nodeSelector if your docker image is built and pushed from windows
+      nodeSelector:
+          kubernetes.io/arch: arm64
+      containers:
+        - name: socket-application
+          image: prat21/websocket
