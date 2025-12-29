@@ -3,6 +3,8 @@ kind: BackendConfig
 metadata:
   name: socket-service-backend
 spec:
+  connectionDraining:
+    drainingTimeoutSec: 3000
   healthCheck:
     timeoutSec: 5
     checkIntervalSec: 10
