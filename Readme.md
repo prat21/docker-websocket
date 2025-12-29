@@ -41,7 +41,7 @@ kubectl logs <pod-name> -f
 - Open postman and create a new websocket request with the url as `ws://<external-ip>:8082/ws/test` 
 and add the previously generated access token in the headers section as **Authorization: Bearer {access_token}**.
 You can make use of the sample postman collection **Websocket basics -> socket test gke**.
-- Click on **Connect** to establish connection. The server should start emitting messages every 3 seconds.
+- Click on **Connect** to establish connection. The server should start emitting messages every 3 seconds which you can see in postman console.
 You can also send test message from postman and server will send the same message back.
 - To create multiple connections you have to create multiple postman websocket requests with the same url and token.
 Make use of the sample postman collection **Websocket basics -> socket test gke 2** and so on.

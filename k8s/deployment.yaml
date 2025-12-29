@@ -19,3 +19,9 @@ spec:
       containers:
         - name: socket-application
           image: prat21/websocket
+          readinessProbe:
+            httpGet:
+              path: /test/hello
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
