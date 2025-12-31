@@ -72,6 +72,11 @@ Sample postman request is present in the collection **Websocket basics -> socket
 - Socket connection should be established successfully and messages should be exchanged. Since the timeout is set as 3000 seconds(50 minutes),
 the connection will be alive for that duration(roughly). After that the connection will be closed.
 
+Reference:
+- [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [GKE Ingress support for websocket](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/ingress-xlb#support_for_websocket)
+- [GKE Ingress with custom health check](https://github.com/GoogleCloudPlatform/gke-networking-recipes/tree/main/ingress/single-cluster/ingress-custom-http-health-check)
+
 ### Useful Tips:
 - It takes time for the ingress resource to be created. Also, even after the resource is created, it takes some time for the forwarding rules to work properly.
 Until then postman will through errors while accessing the ingress external ip. So have to wait for some time after the ingress creation before testing.
